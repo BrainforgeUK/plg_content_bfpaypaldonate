@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.7" type="plugin" group="content" method="upgrade">
+  <name>Paypal Donate Button</name>
+  <creationDate>23 November 2012</creationDate>
+  <author>Jonathan Brain</author>
+  <authorEmail>brainforge@btinternet.com</authorEmail>
+  <authorUrl>http://www.brainforge.co.uk</authorUrl>
+  <copyright>Copyright 2012 Jonathan Brain. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+  <version>3.0.0</version>
+  <description>Displays a Paypal Donate button on your site.</description>
+
+	<files>		
+		<filename plugin="bfpaypaldonate">bfpaypaldonate.php</filename>		
+		<filename>index.html</filename>
+	</files>
+
+	<languages>
+		<language tag="en-GB">en-GB.plg_content_bfpaypaldonate.ini</language>
+		<language tag="en-GB">en-GB.plg_content_bfpaypaldonate.sys.ini</language>
+	</languages>
+
+  <config>
+    <fields name="params">
+    <fieldset name="basic">
+      <field name="accountinfo" type="textarea" rows="10" cols="30"
+             default=""
+        label="PLG_BFPAYPALDONATE_ENCACCINFO_LABEL"
+        description="PLG_BFPAYPALDONATE_ENCACCINFO_DESC" />
+    </fieldset>
+    </fields>
+  </config>
+
+</extension>
