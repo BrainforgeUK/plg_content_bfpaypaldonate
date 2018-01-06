@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="1.7" type="plugin" group="content" method="upgrade">
+<extension version="2.5" type="plugin" group="content" method="upgrade">
   <name>Paypal Donate Button</name>
   <creationDate>23 November 2012</creationDate>
   <author>Jonathan Brain</author>
   <authorEmail>brainforge@btinternet.com</authorEmail>
   <authorUrl>http://www.brainforge.co.uk</authorUrl>
-  <copyright>Copyright 2012 Jonathan Brain. All rights reserved.</copyright>
+  <copyright>Copyright 2012-2018 Jonathan Brain. All rights reserved.</copyright>
   <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
-  <version>3.0.0</version>
+  <version>4.0.0</version>
   <description>Displays a Paypal Donate button on your site.</description>
 
 	<files>		
@@ -31,4 +31,7 @@
     </fields>
   </config>
 
+  <updateservers>
+      <server type="extension" priority="1" name="Paypal Donate Button">https://brainforge.co.uk/media/com_bfupdater/plg_bfpaypaldonate.xml</server>
+  </updateservers>
 </extension>
