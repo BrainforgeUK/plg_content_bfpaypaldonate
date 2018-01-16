@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="content" method="upgrade">
-  <name>Paypal Donate Button</name>
+  <name>Content - Paypal Donate Button by BrainforgeUK</name>
   <creationDate>23 November 2012</creationDate>
   <author>Jonathan Brain</author>
   <authorEmail>brainforge@btinternet.com</authorEmail>
@@ -32,6 +32,6 @@
   </config>
 
   <updateservers>
-      <server type="extension" priority="1" name="Paypal Donate Button">https://brainforge.co.uk/media/com_bfupdater/plg_bfpaypaldonate.xml</server>
+      <server type="extension" priority="1" name="Content - Paypal Donate Button by BrainforgeUK">https://brainforge.co.uk/media/com_bfupdater/plg_bfpaypaldonate.xml</server>
   </updateservers>
 </extension>
