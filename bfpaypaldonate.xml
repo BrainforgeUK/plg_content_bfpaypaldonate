@@ -32,6 +32,6 @@
   </config>
 
   <updateservers>
-      <server type="extension" priority="1" name="Content - Paypal Donate Button by BrainforgeUK">https://brainforge.co.uk/media/com_bfupdater/plg_bfpaypaldonate.xml</server>
+      <server type="extension" priority="1" name="Content - Paypal Donate Button by BrainforgeUK">https://brainforge.co.uk/media/com_bfupdater/plg__content_bfpaypaldonate.xml</server>
   </updateservers>
 </extension>
