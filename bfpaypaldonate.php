@@ -13,8 +13,9 @@ defined('_JEXEC') or die;
 jimport('joomla.plugin.plugin');
 
 class plgContentBFPaypalDonate extends JPlugin{
-	private $accountinfo;
-	private static $donateform = false;
+	protected $app;
+    protected $accountinfo;
+	protected static $donateform = false;
 
 	/**
 	*/
@@ -31,12 +32,22 @@ class plgContentBFPaypalDonate extends JPlugin{
 	{
 		if (empty($this->accountinfo)) return;
 
-			$matches = array();
-			if (preg_match_all('/{(bfpaypaldonate)\s*(.*?)}/i', $article->text, $matches, PREG_SET_ORDER))
+        $matches = array();
+        if (preg_match_all('/{(bfpaypaldonate-{0,1})\s*(.*?)}/i', $article->text, $matches, PREG_SET_ORDER))
 			{
 		    foreach ($matches as $match)
 			{
-				$article->text = $this->insertDonateButton($match[0], $article->text, trim($match[2], '"'));
+                switch($match[1])
+                {
+                    case 'bfpaypaldonate-':
+	                    $article->text = str_replace('bfpaypaldonate-', 'bfpaypaldonate', $article->text);
+                        break;
+	                case 'bfpaypaldonate':
+                    default:
+    	                if (!$this->app->isClient('site')) break;
+		                $article->text = $this->insertDonateButton($match[0], $article->text, trim($match[2], '"'));
+		                break;
+                }
 		    }
 		}
 	}
