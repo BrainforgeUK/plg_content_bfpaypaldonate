@@ -3,7 +3,7 @@
 * @package   Paypal Donate Button
 * @version   0.0.1
 * @author    http://www.brainforge.co.uk
-* @copyright Copyright (C) 2012-2022 Jonathan Brain. All rights reserved.
+* @copyright Copyright (C) 2012-2025 Jonathan Brain. All rights reserved.
 * @license	 GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
 
