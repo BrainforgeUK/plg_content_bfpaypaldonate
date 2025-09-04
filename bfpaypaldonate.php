@@ -22,7 +22,8 @@ class plgContentBFPaypalDonate extends JPlugin{
 	public function __construct(&$subject, $config = array())
 	{
 		parent::__construct($subject, $config);
-		$this->accountinfo = $this->params->def('accountinfo');
+
+        $this->accountinfo = $this->params->def('accountinfo');
 	}
 
 	/**
@@ -30,33 +31,29 @@ class plgContentBFPaypalDonate extends JPlugin{
 	*/
 	public function onContentPrepare($context, &$article, &$params, $limitstart)
 	{
+        if (!$this->app->isClient('site')) return;
+
 		if (empty($this->accountinfo)) return;
 
+        // Allow the escape sequence to be embedded in text without triggering a match.
+        $article->text = str_replace('{{bfpaypaldonate', '&#123;bfpaypaldonate', $article->text);
+
         $matches = array();
-        if (preg_match_all('/{(bfpaypaldonate-{0,1})\s*(.*?)}/i', $article->text, $matches, PREG_SET_ORDER))
-			{
+        if (preg_match_all('/{(bfpaypaldonate\s*)(.*?)}/i', $article->text, $matches, PREG_SET_ORDER))
+		{
 		    foreach ($matches as $match)
 			{
-                switch($match[1])
-                {
-                    case 'bfpaypaldonate-':
-	                    $article->text = str_replace('bfpaypaldonate-', 'bfpaypaldonate', $article->text);
-                        break;
-	                case 'bfpaypaldonate':
-                    default:
-    	                if (!$this->app->isClient('site')) break;
-		                $article->text = $this->insertDonateButton($match[0], $article->text, trim($match[2], '"'));
-		                break;
-                }
+                $article->text = $this->insertDonateButton($match[0], $article->text, trim($match[2], '"'));
 		    }
 		}
 	}
 
 	/*
 	*/
-	private function insertDonateButton($match, $text, $comment=null)
+	private function insertDonateButton($match, $text, $comment='')
 	{
-		if (empty($this->accountinfo)) return;
+        $match = trim($match);
+        $comment = trim($comment);
 
 		ob_start();
 		?>
@@ -77,10 +74,7 @@ class plgContentBFPaypalDonate extends JPlugin{
 
 		$html = str_replace($match, $html, $text);
 
-		if (self::$donateform)
-		{
-			return $html;
-		}
+		if (self::$donateform) return $html;
 		self::$donateform = true;
 
 		ob_start();
